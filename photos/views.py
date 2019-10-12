@@ -14,7 +14,8 @@ def photos(request):
     photo = Image.objects.all()
     locations = Location.objects.all()
 
-    
+    if request.GET.get('location'):
+        photo = Image.filter_by_location(request.GET.get('location'))
     return render(request, 'index.html', {"date": date,"photo": photo, 'locations':locations})
 
 def convert_dates(dates):
