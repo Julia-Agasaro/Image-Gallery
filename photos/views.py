@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http  import HttpResponse
 import datetime as dt
-from .models import Image
+from .models import Image,Location
 
 
 # Create your views here.
@@ -11,8 +11,12 @@ def welcome(request):
 
 def photos(request):
     date = dt.date.today()
-    photo = Image.photos()
-    return render(request, 'photos.html', {"date": date,"image": photo})
+    photo = Image.objects.all()
+    locations = Location.objects.all()
+
+    if request.GET.get('location'):
+        photo = Image.filter_by_location(request.GET.get('location'))
+    return render(request, 'index.html', {"date": date,"photo": photo, 'locations':locations})
 
 def convert_dates(dates):
 
@@ -37,3 +41,12 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+def image(request, id):
+    try:
+        image = Image.objects.get(pk = id)
+
+    except DoesNotExist:
+        raise Http404()
+
+    return render(request, 'photos.html', {"image": image})

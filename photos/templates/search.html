@@ -14,12 +14,43 @@
   <div class="row">
 
   {% if images %}
-    {% for image in images %}
-      <div class="col-sm-6 col-md-3">
-        <img src="{{image.image.url}}" alt="Image" srcset="">
+  <div class="container">
+
+  <div class="card-columns">
+    {% for image in images%}
+    <div class="card border-secondary">
+        <img style="height:300px;width:300px;" src="{{image.image.url}}"
+           data-target="#imageModal{{image.id}}" data-toggle="modal"
+           alt="" class="img-fluid" id="eachimage" size="100px200"><br><br>
       </div>
     {% endfor %}
-  {% endif %}
   </div>
+  </div>
+  {% endif %}
+</div>
+</div>
+<!--modal-->
+    
+<div class="modal fade" id="imageModal{{image.id}}" tabindex="-1"
+role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+   <img src="{{image.image.url}}"
+        data-toggle="modal" alt="" style="height:600px;width:500px;">
+   <div class="modal-header">
+   <h4 id="modal-text text-center">Image Name:{{image.name}}</h4>
+       <h4 style="font-family: 'Kodchasan', sans-serif;color:black;" id="modal-text ">Image Location:{{image.location}}</h4>
+       
+ </div>
+ <div class="modal-footer">
+
+   <h5 id=modal-text>Image Description:{{image.description}}</h5>
+
+   <button type="button" class="btn btn-outline-secondary
+   my-2 my-sm-0" data-dismiss="modal">Close</button>
+
+ </div>
+</div>
+</div>
 </div>
 {% endblock %}
