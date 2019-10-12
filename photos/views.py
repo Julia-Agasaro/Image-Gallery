@@ -16,7 +16,10 @@ def photos(request):
 
     if request.GET.get('location'):
         photo = Image.filter_by_location(request.GET.get('location'))
-    return render(request, 'index.html', {"date": date,"photo": photo, 'locations':locations})
+
+    elif request.GET.get('category'):
+        photo = Image.filter_by_category(request.GET.get('category'))
+    return render(request, 'index.html', {"date": date,"photo": photo, 'locations':locations, 'category':category})
 
 def convert_dates(dates):
 
