@@ -7,13 +7,25 @@
 
     <!--Dropdown for filtering by location or category-->
 
-    
+    <ul class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+         data-toggle="dropdown" aria-haspopup="true"
+         style="font-family: 'Kodchasan', sans-serif;"aria-expanded="false">
+         CATEGORY
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {% for category in category %}
+        <a class="dropdown-item" style="font-family: 'Kodchasan', sans-serif;" href="/?category={{category_name.id}}">{{category.category_name}}</a>
+        <div class="dropdown-divider"></div>
+        {% endfor %}
+      </div>
+    </ul>
 
           <ul class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#"
                id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-             FILTER BY LOCATION
+              LOCATION
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% for location in locations %}

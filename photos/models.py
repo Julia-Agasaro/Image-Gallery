@@ -44,3 +44,7 @@ class Image(models.Model):
         image = cls.objects.filter(location=location)
         return image
     
+    @classmethod
+    def filter_by_category(cls, category):
+        image = cls.objects.filter(category=category)
+        return image
