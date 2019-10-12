@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+{% for photos_item in image %}
+
+  <div class="row">
+    <!-- displaying photos articles -->
+    <div class="col-md-4" data-toggle="modal" data-target="#{{photos_item.id}}">
+      
+      <img src="{{ photos_item.image.url }}" alt="" srcset="">
+    </div>
+<!-- .modal-profile -->
+<div class="modal fade modal-profile" tabindex="-1" role="dialog" aria-labelledby="modalProfile" id="{{photos_item.id}}" aria-hidden="true" data-dismiss="modal">
+    <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+                <div class="modal-header">
+                    <img src="{{photos_item.image.url}}" alt="" width="300" height='250'>
+                      <h3 class="modal-title">{{photos_item.name}}</h3>
+                </div>
+                <div class="modal-body" >
+<p>Name: {{photos_item.image_name}}</p>
+<p>Description: {{photos_item.description}}</p>
+<p>category: {{photos_item.category}}</p>
+<p>location: {{photos_item.location}}</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+
+  </div>
+{% endfor %}
+
+{% endblock %}
