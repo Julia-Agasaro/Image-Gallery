@@ -40,4 +40,9 @@ class ImageTestClass(TestCase):
         self.assertTrue(isinstance(self.image_test,Image))
 
 
+    def tearDown(self):
+        Image.objects.all().delete()
+        Location.objects.all().delete()
+        Category.objects.all().delete()
+
     
