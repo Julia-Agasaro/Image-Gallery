@@ -36,12 +36,17 @@ role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
    <img src="{{image.image.url}}"
-        data-toggle="modal" alt="" style="height:600px;width:500px;">
+        data-toggle="modal" alt="" style="height:400px;width:497px;">
    <div class="modal-header">
    <h4 id="modal-text text-center">Image Name:{{image.name}}</h4>
        <h4 style="font-family: 'Kodchasan', sans-serif;color:black;" id="modal-text ">Image Location:{{image.location}}</h4>
        
  </div>
+ <div class="modal-footer">
+
+    <input class="form-control" type="text" value="127.0.0.1:8000{{image.image.url}}" id="link">
+    <button type="button" value="127.0.0.1:8000{{image.image.url}}"class="btn btn-success" style="background-color:black;" data-dismiss="modal" onclick="copy('{{image.id}}')">copyLink</button>
+  </div>
  <div class="modal-footer">
 
    <h5 id=modal-text>Image Description:{{image.description}}</h5>
@@ -53,5 +58,18 @@ role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
 </div>
 </div>
 </div>
+<script>
+    function copy(ids) {
+        var textCopied = document.getElementById(ids);
+        text = textCopied.src;
+        var elementary = document.createElement("input");
+        document.body.appendChild(elementary);
+        elementary.setAttribute('value', text);
+        elementary.select();
+        document.execCommand("copy");
+        document.body.removeChild(elementary);
+        alert("Copied: " + textCopied.src);
+        }
+ </script>
 {% endfor %}
 {% endblock %}
