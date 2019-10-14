@@ -28,6 +28,14 @@ class Image(models.Model):
     location=models.ForeignKey(Location, db_column='location_name', blank=True)
     category = models.ForeignKey(Category,db_column='category_name', blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
+   
+   def save_image(self):
+        self.save()
+   
+   
+   
+   
+   
     @classmethod
     def photos(cls):
         today = dt.date.today()

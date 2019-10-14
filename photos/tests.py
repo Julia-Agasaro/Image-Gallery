@@ -33,6 +33,9 @@ class ImageTestClass(TestCase):
         self.category = Category(cat='Chocolates')
         self.category.save()
 
+        self.image_test = Image(description='All Time Fave',location=self.location,category=self.category)
+        self.image_test.save_image()
+
         
 
     
