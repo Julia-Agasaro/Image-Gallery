@@ -50,4 +50,11 @@ class ImageTestClass(TestCase):
         images = Image.objects.all()
         self.assertTrue(len(images)>0)
 
-    
+    def test_delete_image(self):
+        self.image_test.save_image()
+        self.image_test.delete_image()
+        self.image_test1.delete_image()
+        images  = Image.objects.all()
+        self.assertTrue(len(images)==0)
+
+   
