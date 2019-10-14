@@ -33,11 +33,14 @@ class Image(models.Model):
     @classmethod
     def photos(cls):
         today = dt.date.today()
-        photos = cls.objects.filter(pub_date__date = today)
+        photos = cls.objects.all()
         return photos
 
     def save_image(self):
         self.save()
+
+    def delete_image(self):
+        self.delete()
 
     @classmethod  
     def search_by_image(cls,search_term):

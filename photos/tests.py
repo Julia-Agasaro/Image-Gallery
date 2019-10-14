@@ -27,15 +27,17 @@ class LocationTestClass(TestCase):
 
 class ImageTestClass(TestCase):
     def setUp(self):
-        self.location = Location(loc='Kigali')
+        self.location = Location(location='Kigali')
         self.location.save()
 
-        self.category = Category(cat='Chocolates')
+        self.category = Category(category_name='Chocolates')
         self.category.save()
 
         self.image_test = Image(description='All Time Fave',location=self.location,category=self.category)
         self.image_test.save_image()
 
-        
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image_test,Image))
+
 
     
