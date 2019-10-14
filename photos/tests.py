@@ -84,3 +84,16 @@ class CategoryTestClass(TestCase):
         self.category.save_category()
         categories = Category.objects.all()
         self.assertTrue(len(categories)>0)
+
+    def test_update_category(self):
+        new_category_name = 'Babies'
+        self.category.update_category(self.category.id,new_category_name)
+        changed_category = Category.objects.filter(category_name='Food')
+        self.assertTrue(len(changed_category)>0)
+
+    
+
+    def test_delete_category(self):
+        self.category.delete_category()
+        category = Category.objects.all()
+        self.assertTrue(len(category)==0)

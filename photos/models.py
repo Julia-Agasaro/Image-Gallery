@@ -22,6 +22,14 @@ class Category(models.Model):
     def save_category(self):
         self.save()
 
+
+    def delete_category(self):
+        self.delete()
+        
+    @classmethod
+    def update_category(cls, id, value):
+        cls.objects.filter(id=id).update(category_name=value)
+
        
 class Image(models.Model):
     image=models.ImageField(upload_to='picture/')
