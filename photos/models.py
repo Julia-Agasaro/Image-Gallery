@@ -41,6 +41,11 @@ class Image(models.Model):
 
     def delete_image(self):
         self.delete()
+    
+
+    @classmethod
+    def update_image(cls, id, value):
+        cls.objects.filter(id=id).update(image=value)
 
     @classmethod  
     def search_by_image(cls,search_term):

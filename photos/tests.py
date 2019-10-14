@@ -53,8 +53,19 @@ class ImageTestClass(TestCase):
     def test_delete_image(self):
         self.image_test.save_image()
         self.image_test.delete_image()
-        self.image_test1.delete_image()
         images  = Image.objects.all()
         self.assertTrue(len(images)==0)
 
-   
+    def test_update_image(self):
+        self.image_test.save_image()
+        self.image_test.update_image(self.image_test.id,'collection/test_one.jpg')
+        changed_img = Image.objects.filter(image='collection/test_one.jpg')
+        self.assertTrue(len(changed_img)>0)
+
+    
+    def test_search_by_image(self):
+        category = 'Chocolates'
+        found_img = self.image_test.search_by_image(category)
+        self.assertTrue(len(found_img)>0)
+
+    
