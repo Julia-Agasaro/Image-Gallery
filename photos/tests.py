@@ -79,4 +79,8 @@ class CategoryTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.category,Category))
 
-   
+    def test_save_category(self):
+        Category.objects.all().delete()
+        self.category.save_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories)>0)
