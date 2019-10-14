@@ -24,3 +24,15 @@ class LocationTestClass(TestCase):
         self.kigali.save_location()
         location = Location.objects.all()
         self.assertTrue(len(location) > 0)
+
+class ImageTestClass(TestCase):
+    def setUp(self):
+        self.location = Location(loc='Kigali')
+        self.location.save()
+
+        self.category = Category(cat='Chocolates')
+        self.category.save()
+
+        
+
+    
