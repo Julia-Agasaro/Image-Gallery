@@ -43,6 +43,7 @@
             <div class="modal-footer">
 
             <input class="form-control" type="text" value="https://gallery-image.herokuapp.com{{image.image.url}}" id="link">
+            <a onclick="myFunction()"><button type="button" style="background-color:black;" class="btn btn-dark">Copy Link</button></a>
             <button type="button" value="https://gallery-image.herokuapp.com{{image.image.url}}"class="btn btn-success" style="background-color:black;" data-dismiss="modal" onclick="copy(ids)">copyLink</button>
           </div>
             <div class="modal-footer">
@@ -60,18 +61,16 @@
     </div>
   </div>
   <script>
-      function copy(ids) {
-          var textCopied = document.getElementById(ids);
-          text = textCopied.src;
-          var elementary = document.createElement("input");
-          document.body.appendChild(elementary);
-          elementary.setAttribute('value', text);
-          elementary.select();
-          document.execCommand("copy");
-          document.body.removeChild(elementary);
-          alert("Copied: " + textCopied.src);
-          }
+    function myFunction(){
+      var copyText=document.getElementById("link");
+      copyText.select();
+      document.execCommand("copy");
+      // this will copy the images's link
+      alert("copied the text: " + copyText.value);
+      // these codes are not mine ... i made a research from google
+    }
    </script>
+   
     {% endfor %}
   </div>
   </div>
