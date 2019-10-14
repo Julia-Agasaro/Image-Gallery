@@ -30,7 +30,7 @@
 </div>
 </div>
 <!--modal-->
-    
+{% for image in images%}
 <div class="modal fade" id="imageModal{{image.id}}" tabindex="-1"
 role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -53,4 +53,5 @@ role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
 </div>
 </div>
 </div>
+{% endfor %}
 {% endblock %}
