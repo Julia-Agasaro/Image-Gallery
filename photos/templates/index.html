@@ -7,25 +7,25 @@
 
 <div class="jumbotron text-center" style="background-color:black;">
 
-<h1 class="h1" style="font-family: 'Abril Fatface', cursive; color:white;font-size:70px;">Gallery Of Images  </h1>
+<h1 class="h1" style="font-family: 'Abril Fatface', cursive; color:white;font-size:70px;">Gallery   Of   Images  </h1>
 
 </div>
 </div>
 
 
 <div class="container">
+  <div class="row">
+      {% for image in photo %}
+  <div class="col-md-4 details">
 
-<div class="card-columns">
-
-    {% for image in photo %}
-  <div class="card border-secondary">
-   <img style="height:300px;width:300px;" src="{{image.image.url}}"
+    
+    <div class="card" style="width:auto;">
+   <img style="height:300px;width:348px;" src="{{image.image.url}}"
            data-target="#imageModal{{image.id}}" data-toggle="modal"
-           alt="" class="img-fluid" id="eachimage" size="100px200"><br><br>
-  </div>
+           alt="" class="card-img-top" ><br><br>
+  
      
-</div>
-</div>
+
 
   <!--modal-->
     
@@ -34,20 +34,20 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
               <img src="{{image.image.url}}"
-                   data-toggle="modal" alt="" style="height:600px;width:500px;">
+                   data-toggle="modal" alt="" style="height:400px;width:497px;">
               <div class="modal-header">
-              <h4 id="modal-text text-center">Image Name:{{image.name}}</h4>
-                  <h4 style="font-family: 'Kodchasan', sans-serif;color:black;" id="modal-text ">Image Location:{{image.location}}</h4>
+              <h4  style="font-family: 'Kodchasan', sans-serif;color:black;" id="modal-text text-center"> Name:{{image.name}}</h4>
+                  <h4 style="font-family: 'Kodchasan', sans-serif;color:black;" id="modal-text "> Location:{{image.location}}</h4>
                   
             </div>
             <div class="modal-footer">
 
             <input class="form-control" type="text" value="127.0.0.1:8000{{image.image.url}}" id="link">
-            <button type="button" value="127.0.0.1:8000{{image.image.url}}"class="btn btn-success" data-dismiss="modal" onclick="myFunction()">copyLink</button>
+            <button type="button" value="127.0.0.1:8000{{image.image.url}}"class="btn btn-success" style="background-color:black;" data-dismiss="modal" onclick="copy('{{image.id}}')">copyLink</button>
           </div>
             <div class="modal-footer">
 
-              <h5 id=modal-text>Image Description:{{image.description}}</h5>
+              <h5  style="font-family: 'Kodchasan', sans-serif;color:black;"id=modal-text> Description:{{image.description}}</h5>
 
               <button type="button" class="btn btn-outline-secondary
               my-2 my-sm-0" data-dismiss="modal">Close</button>
@@ -57,16 +57,23 @@
           </div>
         </div>
       </div>
-
-      <script>
-        function myFunction(){
-            var copyText=document.getElementById("link");
-            copyText.select();
-            copyText.setSelectionRange(0, 999999)
-            document.execCommand("copy");
-            // alert("copied link:" + copyText.value);
-        }
-     </script>
+    </div>
+  </div>
+  <script>
+      function copy(ids) {
+          var textCopied = document.getElementById(ids);
+          text = textCopied.src;
+          var elementary = document.createElement("input");
+          document.body.appendChild(elementary);
+          elementary.setAttribute('value', text);
+          elementary.select();
+          document.execCommand("copy");
+          document.body.removeChild(elementary);
+          alert("Copied: " + textCopied.src);
+          }
+   </script>
     {% endfor %}
-
+  </div>
+  </div>
    {% endblock %}
+

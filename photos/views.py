@@ -8,12 +8,12 @@ from .models import Image,Location,Category
 
 def welcome(request):
     return render(request, 'welcome.html')
-category=Category.objects.all()
+
 def photos(request):
     date = dt.date.today()
     photo = Image.objects.all()
     locations = Location.objects.all()
-    
+    category=Category.objects.all()
     if request.GET.get('location'):
         photo = Image.filter_by_location(request.GET.get('location'))
 

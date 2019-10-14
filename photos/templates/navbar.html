@@ -1,16 +1,16 @@
-<!-- <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Charmonman|Kodchasan|Dancing+Script|Spirax" rel="stylesheet"> -->
+
 <nav class="navbar " style="background-color:grey">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" id="victor" href="{% url 'photos' %}"> Gallery Of Images         </a>
+      <a class="navbar-brand" id="victor" href="{% url 'photos' %}" style="font-family: 'Kodchasan', sans-serif; color: black"> Gallery Of Images         </a>
     </div>
 
     <!--Dropdown for filtering by location or category-->
 
-    <ul class="nav-item dropdown">
+    <!-- <ul class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
          data-toggle="dropdown" aria-haspopup="true"
-         style="font-family: 'Kodchasan', sans-serif;"aria-expanded="false">
+         style="font-family: 'Kodchasan', sans-serif; color: black"aria-expanded="false">
          CATEGORY
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -19,12 +19,13 @@
         <div class="dropdown-divider"></div>
         {% endfor %}
       </div>
-    </ul>
+    </ul> -->
 
           <ul class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#"
                id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+              aria-haspopup="true" style="font-family: 'Kodchasan', sans-serif; color: black"
+              aria-expanded="false">
               LOCATION
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,9 +45,9 @@
       <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
         <div class="input-group">
-          <input type="text"  placeholder="Search Image" name="image">
+          <input type="text"  placeholder="Search categories " name="image">
           <div class="input-group-btn">
-            <button class="btn btn-info" type="submit">Submit</button>
+            <button class="btn btn-info" style="font-family: 'Kodchasan', sans-serif;background-color:black;"type="submit">Submit</button>
           </div>
         </div>
 
@@ -56,37 +57,3 @@
   </div>
 </nav>
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'photos' %}">~Gallery Of Images~</a>
-    </div>
-  </div>
-   <!-- Adding a search form  -->
-   <!-- <div class="col-sm-4 col-md-4 navbar-right">
-
-    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
-
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Image" name="image">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-        </div>
-      </div>
-
-    </form>
-  </div> -->
-  <!-- search form end -->
-<!-- </div>
-
-</nav>
-</body>
-</html>  -->
