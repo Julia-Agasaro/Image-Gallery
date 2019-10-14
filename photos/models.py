@@ -29,18 +29,16 @@ class Image(models.Model):
     category = models.ForeignKey(Category,db_column='category_name', blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
    
-   def save_image(self):
-        self.save()
-   
-   
-   
-   
    
     @classmethod
     def photos(cls):
         today = dt.date.today()
         photos = cls.objects.filter(pub_date__date = today)
         return photos
+
+    def save_image(self):
+        self.save()
+
     @classmethod  
     def search_by_image(cls,search_term):
         image = cls.objects.filter(category__category_name__contains=search_term)
