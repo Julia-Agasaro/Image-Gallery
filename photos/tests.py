@@ -68,4 +68,15 @@ class ImageTestClass(TestCase):
         found_img = self.image_test.search_by_image(category)
         self.assertTrue(len(found_img)>0)
 
-    
+class CategoryTestClass(TestCase):
+    def setUp(self):
+        self.category = Category(category_name='Chocolates')
+        self.category.save()
+
+    def tearDown(self):
+        Category.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.category,Category))
+
+   
